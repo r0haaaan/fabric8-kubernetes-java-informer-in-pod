@@ -33,7 +33,6 @@ public class SimpleSharedInformerRun {
 
         SharedIndexInformer<Pod> podInformer = informerFactory.sharedIndexInformerFor(Pod.class,
                 PodList.class,
-                new OperationContext().withNamespace("default"),
                 RESYNC_PERIOD);
 
         SharedIndexInformer<PodSet> podSetInformer = informerFactory.sharedIndexInformerForCustomResource(
@@ -45,7 +44,6 @@ public class SimpleSharedInformerRun {
                         .build(),
                 PodSet.class,
                 PodSetList.class,
-                new OperationContext().withNamespace("default"),
                 RESYNC_PERIOD);
 
         podInformer.addEventHandler(new ResourceEventHandler<Pod>() {
